@@ -1,0 +1,2880 @@
+﻿linear search
+import java.util.Scanner;
+class LinearSearch
+{
+        //Method to perform linear search
+        public static int linearSearch(int[] arr,int target)
+        {
+                for(int i=0;i<arr.length;i++)
+                {
+                        if(arr[i] == target)
+                        {
+                                return i;   //Return the index if the target is found
+                        }
+                }
+                return -1;   //Return -1 if the target is not found
+        }
+        public static void main(String[] args)
+        {
+                Scanner scanner = new Scanner(System.in);
+                //Input for array size
+                System.out.print("Enter the number of elements in the array:");
+                int size = scanner.nextInt();
+                int[] array = new int[size];
+                //Input for array elements
+                System.out.println("enter the elements of the array:");
+                for (int i =0; i<size; i++)
+                {
+                        array[i]= scanner.nextInt();
+                }
+                //Input for target value
+                System.out.println("Enter the target value to search for:");
+                int target = scanner.nextInt();
+                //Perform linear search
+                int result = linearSearch(array,target);
+
+
+                //Output the result
+                if(result != -1)
+                {
+                        System.out.println("Element found at index:"+result);
+                }
+                else 
+                {
+                        System.out.println("Element not found in the array.");
+                }
+
+
+                //Close the scanner
+                scanner.close();
+        }
+}
+Binarysearch
+import java.util.Arrays;
+import java.util.Scanner;
+        class BinarySearch{
+                public static int binarySearch(int[] arr, int target){
+                        int left = 0;
+                        int right = arr.length - 1;
+
+
+                        while(left <= right){
+                                int mid = left + (right - left) / 2;
+
+
+                                if(arr[mid] == target){
+                                        return mid;
+                                }
+                                else if(arr[mid] < target){
+                                        left = mid + 1;
+                                }
+                                else{
+                                        right = mid - 1;
+                                }
+                        }
+                        return -1;
+                }
+                public static void main(String[] args){
+                Scanner sc = new Scanner(System.in);
+                System.out.println("Enter the size of the array: ");
+                int size = sc.nextInt();
+                int[] array = new int[size];
+                System.out.println("Enter the elements of sorted array: ");
+                for(int i = 0; i < size; i++){
+                        array[i] = sc.nextInt();
+                }
+                System.out.println("Enter the element to searched: ");
+                int target = sc.nextInt();
+                int result = binarySearch(array, target);
+                if(result != -1){
+                        System.out.println("Element found at index " + result);
+        }
+        else{
+                System.out.println("Element not found in the array");
+        }
+        sc.close();
+        }
+}
+Bubble Sort
+class BubbleSort
+{
+        //Method to perform bubble sort
+        public static void bubbleSort(int[] arr)
+        {
+                int n = arr.length;
+                Boolean swapped;
+                for (int i = 0; i < n - 1; i++)
+                {
+                        swapped = false;
+                        //Track if a swap was made in this iteration
+                        for (int j = 0; j < n - 1 - i; j++)
+                        {
+                                if (arr[j] > arr[j + 1])
+                                {
+                                        //swap arr[j] > arr[j + 1])
+                                        int temp = arr[j];
+                                        arr[j] = arr[j + 1];
+                                        arr[j + 1] = temp;
+                                        swapped = true; // A swap occurred
+                                }
+                        }
+                        // If no swaps occurred, the array is already sorted
+                        if (!swapped)
+                        {
+                                break;
+                        }
+                }
+        }
+        // Method to print the array
+        public static void printArray(int[] arr)
+        {
+                for (int num : arr)
+                {
+                        System.out.print(num + " ");
+                }
+                System.out.println();
+        }
+        //Main method to test the bubble sort
+        public static void main(String[] args)
+        {
+                int[] arr = {64 ,34 ,25 ,12 ,22 ,11 ,90};
+                System.out.println("Original array:");
+                printArray(arr);
+                bubbleSort(arr);
+                System.out.println("Sorted array:");
+                printArray(arr);
+        }
+}
+InsertionSort
+class InsertionSort
+{
+        //method to perform insertion sort
+        public static void insertionSort(int[]arr){
+                for( int i = 1; i<arr.length; i++)
+                {
+                        int key = arr[i]; //The element to be inserted
+                        int j = i - 1;
+                        //Move elements of arr[0..i-1] that are greater than key to one position 
+                        //ahead of their current position
+                        while(j >= 0 && arr[j] > key)
+                        {
+                                arr[j+1]=arr[j];
+                                j--;
+                        }
+                        arr[j+1] = key; //Insert the key at its correct position
+                }
+        }
+        //Method to print array
+        public static void printArray(int[]arr)
+        {
+                for (int num : arr)
+                {
+                        System.out.println(num + " ");
+                }
+                System.out.println();
+        }
+        public static void main(String[]args){
+                int[] arr = {64,34,25,12,22,11,90};
+                System.out.println("Original array:");
+                printArray(arr);
+                insertionSort(arr);
+                System.out.println("Sorted array:");
+                printArray(arr);
+        }
+}
+Selection Sort
+class Selectionsort
+{
+        //Method to perform selection sort
+        public static void selectionSort(int[]  arr)
+        {
+                int n = arr.length;
+                //Traverse through all array elements
+                for (int i = 0; i < n - 1; i++)
+                {
+                        //Find the minimum elements in the unsorted portion
+                        int minIndex = i;
+                        for (int j = i + 1; j < n; j++)
+                        {
+                                if( arr[j] < arr[minIndex])
+                                {
+                                        minIndex = j; //Update index of the minimum element
+                                }
+                        }
+                        //Swap the found minimum element with the first element
+                        int temp =  arr[minIndex];
+                        arr[minIndex] = arr[i];
+                        arr[i] = temp;
+                }
+        }
+        //Method to print the array 
+        public static void printArray(int[] arr)
+        {
+                for (int num : arr)
+                {
+                        System.out.println(num + " ");
+                }
+                System.out.println();
+        }
+         public static void main(String[] args)
+        {
+                System.out.println("Rollno: 24MCA62");
+                System.out.println("Name: Bhakti Keshav Waghamare");
+                int[] arr = {64,25,12,22,11};
+                System.out.println("Original array:");
+                printArray(arr);
+                selectionSort(arr);
+                System.out.println("Sorted array:");
+                printArray(arr);
+        }
+}
+Shell Sort
+class ShellSort
+{
+        //Method to perform Shell sort
+        public static void shellSort(int[] arr)
+        {
+                int n = arr.length;
+                //start with a large gap, then reduce the gap
+                for (int gap = n / 2; gap > 0; gap /= 2)
+                {
+                        //Perform a gapped insertion sort
+                        for (int i = gap; i < n; i++)
+                        {
+                                int temp = arr[i];
+                                //Shift earlier gap-sorted elements up until the correct location for temp is found
+                                int j;
+                                for (j = i; j >= gap && arr[j - gap] > temp; j -= gap)
+                                {
+                                        arr[j] = arr[j - gap];
+                                }
+                        
+                                //put temp in its correct location
+                                arr[j] = temp;
+                          }
+                }
+        }
+        //Method to print the array
+        public static void printArray(int[] arr)
+        {
+                for (int i : arr)
+                {
+                        System.out.print(i + " ");
+                }
+                System.out.println();
+        }
+        //Main method to test the shell sort
+        public static void main(String[] args)
+        {
+                int[] arr = {12, 34, 54, 2, 3};
+                System.out.println("Original array:");
+                printArray(arr);
+                shellSort(arr);
+                System.out.println("Sorted array:");
+                printArray(arr);
+        }
+}
+Radix Sort
+import java.util.Arrays;
+class RadixSort 
+{
+    // Main function to implement Radix Sort
+    public static void radixSort(int[] array) 
+    {
+        int max = findMax(array); // Find the maximum number to determine the number of digits
+        // Perform counting sort for each digit (1s, 10s, 100s, etc.)
+        for (int exp = 1; max / exp > 0; exp *= 10) 
+        {
+            countingSort(array, exp);
+        }
+    }
+
+
+    // Function to find the maximum number in the array
+    private static int findMax(int[] array) 
+    {
+        int max = array[0];
+        for (int num : array) 
+        {
+            if (num > max) 
+            {
+                max = num;
+            }
+        }
+        return max;
+    }
+    // Counting Sort based on the digit represented by `exp`
+    private static void countingSort(int[] array, int exp) 
+    {
+        int n = array.length;
+        int[] output = new int[n]; // Output array to store sorted numbers
+        int[] count = new int[10]; // Count array to store count of each digit (0-9)
+
+
+        // Count occurrences of digits at the current place value
+        for (int num : array) 
+        {
+            int digit = (num / exp) % 10;
+            count[digit]++;
+        }
+        // Update count[i] to store the cumulative count
+        for (int i = 1; i < 10; i++) 
+        {
+            count[i] += count[i - 1];
+        }
+        // Build the output array
+        for (int i = n - 1; i >= 0; i--) 
+        {
+            int digit = (array[i] / exp) % 10;
+            output[count[digit] - 1] = array[i];
+            count[digit]--;
+        }
+
+
+        // Copy the sorted numbers back into the original array
+        System.arraycopy(output, 0, array, 0, n);
+    }
+    // Main function to test the algorithm
+    public static void main(String[] args) 
+    {
+int[] array = {170, 45, 75, 90, 802, 24, 2, 66};
+        System.out.println("Original array: " + Arrays.toString(array));
+        radixSort(array);
+        System.out.println("Sorted array: " + Arrays.toString(array));
+    }
+}
+Quick Sort
+class QuickSort 
+{
+    // Main function to implement QuickSort
+    public static void quickSort(int[] arr, int low, int high) 
+    {
+        if (low < high) 
+        {
+            // Find the pivot element such that
+            // elements smaller than pivot are on the left,
+            // elements greater than pivot are on the right
+            int pivotIndex = partition(arr, low, high);
+
+
+            // Recursively apply to the left and right subarrays
+            quickSort(arr, low, pivotIndex - 1);
+            quickSort(arr, pivotIndex + 1, high);
+        }
+    }
+    // Partition the array around the pivot
+    private static int partition(int[] arr, int low, int high) 
+    {
+        // Pivot is taken as the last element
+        int pivot = arr[high];
+        int i = low - 1; // Index of smaller element
+        // Traverse the array and move smaller elements to the left
+        for (int j = low; j < high; j++) 
+        {
+            if (arr[j] <= pivot) 
+            {
+                i++; // Increment the index of smaller element
+                // Swap arr[i] and arr[j]
+                int temp = arr[i];
+                arr[i] = arr[j];
+                arr[j] = temp;
+            }
+        }
+        // Swap the pivot element with the element at (i + 1)
+        int temp = arr[i + 1];
+        arr[i + 1] = arr[high];
+        arr[high] = temp;
+        return i + 1; // Return the partitioning index
+    }
+    // Utility method to print the array
+    public static void printArray(int[] arr) 
+    {
+        for (int i = 0; i < arr.length; i++) 
+        {
+            System.out.print(arr[i] + " ");
+        }
+        System.out.println();
+    }
+    // Main method to test the QuickSort implementation
+    public static void main(String[] args) 
+    {
+        int[] arr = { 12, 11, 13, 5, 6, 7 };
+        System.out.println("Original array:");
+        printArray(arr);
+        quickSort(arr, 0, arr.length - 1);
+        System.out.println("Sorted array:");
+        printArray(arr);
+    }
+}
+hashing
+class HashTable
+{
+        private Integer[] table;
+        private int size;
+        private int capacity;
+
+
+        //constructor
+        public HashTable(int capacity)
+        {
+                this.capacity = capacity;
+                this.size = 0;
+                table = new Integer[capacity];
+
+
+//Initialize the hash table with null values (empty slots)
+                for (int i = 0; i < capacity; i++)
+                {
+                        table[i] = null;
+                }
+        }
+        //hash function to compute index
+        private int hash(int key)
+        {
+                return key % capacity;
+        }
+        //insert method with collision handling using linear probing
+        public void insert(int key)
+        {
+                if (size == capacity)
+                {
+                        System.out.println("Hash table is full, can't insert " + key);
+                        return;
+                }
+                int index = hash(key);
+                System.out.println("Inserting key" + key + " at initial index" + index);
+                //Linear probing: resolve collision if the slot is already occupied
+                while (table[index] != null)
+                {
+
+
+                        System.out.println("Collission detected at index "+ index + "for key" + key);
+                        index = (index + 1) % capacity; //move to the next slot
+                }
+                table[index] = key; //Insert the key at the found empty slot
+                size++;
+                System.out.println("Key " + key + "inserted at index " + index);
+        }
+        //display the hash table
+        public void display()
+        {
+                System.out.println("\nHash Table contents:");
+                for (int i = 0; i < capacity; i++)
+                {
+                        if (table[i] != null)
+                        {
+                                System.out.println("Index " + i + ":" + table[i]);
+                        }
+                        else
+                        {
+                                System.out.println("Index " + i + ": Empty");
+                        }
+                }
+        }
+}
+public class LinearProbingCollisionDemo
+{
+        public static void main(String [] args)
+        {
+                //create a hash table of size 10
+                HashTable hashTable = new HashTable(10);
+                //Display the initial hash table (before any insertion)
+                System.out.println("Initial empty hash table:");
+                hashTable.display();
+                //Insert keys and show collision resolution
+                System.out.println("\nInserting key 12...");
+                hashTable.insert(12); //should go to index 2
+                 System.out.println("\nInserting key 22...");
+                hashTable.insert(22); //collision to index 2,resolve by going to index 3
+                System.out.println("\nInserting key 32...");
+                hashTable.insert(32); //collision to index 2 and 3,resolve by going to index 4
+                System.out.println("\nInserting key 42...");
+                hashTable.insert(42); //collision to index 2,3 and 4,resolve by going to index 5
+                System.out.println("\nInserting key 52...");
+                hashTable.insert(52); //collision to index 2,3,4, and 5,resolve by going to index 6
+                //display the final hash table after all insertions
+                hashTable.display();
+        }
+}
+Ordinary Queue
+class Queue
+{
+        private Node front; //Front node of the queue
+        private Node rear; //Rear node of the queue
+        //Node structure
+        private static class Node
+        {
+                int data;
+                Node next;
+                
+                Node(int data)
+                {
+                        this.data = data;
+                        this.next = null;
+                }
+        }        
+        public Queue()
+        {
+                this.front = this.rear = null;
+        }
+        //Enqueue operation to add an element to the rear of the queue
+        public void enqueue(int data)
+        {
+                Node newNode = new Node(data);
+
+
+                //If the queue is empty,both front and rear will point to the new node
+                if (rear == null)
+                {
+                        front = rear = newNode;
+                        System.out.println("Enqueued: "+ data);
+                        return;
+                }
+                //Add the new node at the end of the queue and change rear to new node
+                rear.next = newNode;
+                rear = newNode;
+                System.out.println("Enqueued: "+ data);
+        }
+        
+        //Dequeue operation to remove the front element from the queue
+        public int dequeue()
+        {
+                if (front == null)
+                {
+                        System.out.println("Queue is empty");
+                        return -1;
+                }
+                int data = front.data;
+                front = front.next;
+
+
+                //If front becomes null, then rear should also be null
+                if (front == null)
+                {
+                        rear = null;
+                }
+                System.out.println("Dequeued: "+data);
+                return data;
+        }
+        //Check if the queue is empty
+        public Boolean isEmpty()
+        {
+                return front == null;
+        }
+        //display the elements in the queue
+        public void display()
+        {
+                if (front == null)
+                {
+                        System.out.println("Queue is empty");
+                        return;
+                }
+                Node current = front;
+                while (current != null)
+                {
+                        System.out.println(current.data + " ");
+                        current= current.next;
+                }
+                System.out.println();
+        }
+}
+//Usage example
+class Main1
+{
+        public static void main(String[] args)
+        {
+                Queue queue = new Queue();
+                queue.enqueue(10);
+                queue.enqueue(20);
+                queue.enqueue(30);
+                queue.display(); //Output; 10 20 30
+                queue.dequeue(); //removes 10
+                queue.display(); //Output 20 30
+                queue.enqueue(40);
+                queue.display();// Output: 20 30 40
+        }
+}
+CircularQueue
+class CircularQueue {
+    private int[] queue;
+    private int front;
+    private int rear;
+    private int capacity;
+    private int size;
+    public CircularQueue(int capacity) {
+        this.capacity = capacity;
+        queue = new int[capacity];
+        front = 0;
+        rear = -1;
+        size = 0;
+    }
+    public void enqueue(int value) {
+        if (isFull()) {
+            System.out.println("Queue is full. Cannot enqueue " + value);
+            return;
+        }
+        rear = (rear + 1) % capacity;
+        queue[rear] = value;
+        size++;
+        System.out.println("Enqueued: " + value);
+    }
+    public int dequeue() {
+        if (isEmpty()) {
+            System.out.println("Queue is Empty. Cannot dequeue");
+            return -1;
+        }
+        int value = queue[front];
+        front = (front + 1) % capacity;
+        size--;
+        System.out.println("Dequeued: " + value);
+        return value;
+    }
+    public boolean isEmpty() {
+        return size == 0;
+    }
+    public boolean isFull() {
+        return size == capacity;
+    }
+    public int getSize() {
+        return size;
+    }
+    public void display() {
+        if (isEmpty()) {
+            System.out.println("Queue is Empty.");
+            return;
+        }
+        System.out.println("Queue Elements: ");
+        for (int i = 0; i < size; i++) {
+            System.out.print(queue[(front + i) % capacity] + " ");
+        }
+        System.out.println();
+    }
+    public static void main(String[] args) {
+        CircularQueue cq = new CircularQueue(5);
+        cq.enqueue(10);
+        cq.enqueue(20);
+        cq.enqueue(30);
+        cq.enqueue(40);
+        cq.enqueue(50);
+
+
+        cq.display();
+        cq.dequeue();
+        cq.dequeue();
+        cq.display();
+        cq.enqueue(60);
+        cq.display();
+    }
+}
+Infix to Postfix
+import java.util.Stack;
+public class InfixToPostfix {
+    private static boolean isOperator(char c) {
+        return c == '+' || c == '-' || c == '*' || c == '/' || c == '^';
+    }
+    private static int precedence(char op) {
+        switch (op) {
+            case '+':
+            case '-':
+                return 1;
+            case '*':
+            case '/':
+                return 2;
+            case '^':
+                return 3;
+            default:
+                return 0;
+        }
+    }
+    public static String infixToPostfix(String infix) {
+        StringBuilder postfix = new StringBuilder();
+        Stack<Character> stack = new Stack<>();
+        for (char c : infix.toCharArray()) {
+            if (Character.isLetterOrDigit(c)) {
+                postfix.append(c);
+            } else if (c == '(') {
+                stack.push(c);
+            } else if (c == ')') {
+                while (!stack.isEmpty() && stack.peek() != '(') {
+                    postfix.append(stack.pop());
+                }
+                stack.pop();
+            } else if (isOperator(c)) {
+                while (!stack.isEmpty() && precedence(stack.peek()) >= precedence(c)) {
+                    postfix.append(stack.pop());
+                }
+                stack.push(c);
+            }
+        }
+        while (!stack.isEmpty()) {
+            postfix.append(stack.pop());
+        }
+
+
+        return postfix.toString();
+    }
+    public static void main(String[] args) {
+        String infix = "a+b*(c*d-e)^(f+g*h)-i";
+        String postfix = infixToPostfix(infix);
+        System.out.println("Postfix Expression: " + postfix);
+    }
+}
+Postfix Evaluation
+import java.util.Stack;
+class PostfixEvaluator
+{
+        //Method to evaluate postfix expression
+        public static int evaluatePostfix(String expression)
+        {
+                Stack<Integer> stack = new Stack<>();
+                //Iterate through each character in the expression
+                for (char ch : expression.toCharArray())
+                {
+                        //If the character is a number, push it to the stack
+                        if (Character.isDigit(ch))
+                        {
+                                stack.push(ch - '0');//Convert char to int
+                        }
+                        else
+                        {
+                        //If the character is an operator,pop two elements from stack
+                                int b = stack.pop();
+                                int a = stack.pop();
+                                int result = 0;
+                                //Perform the operation based on the operator
+                                switch(ch)
+                                {
+                                        case '+':
+                                                result = a + b;
+                                                break;
+                                        case '-':
+                                                result = a - b;
+                                                break;
+                                        case '*':
+                                                result = a * b;
+                                                break;
+                                        case '/':
+                                                result = a / b;
+                                                break;                
+                                }
+                                // push the result back to the stack
+                                stack.push(result);
+                        }
+                }
+                //The final result will be the only element in the stack
+                return stack.pop();
+        }
+        public static void main(String[] args)
+        {
+                String postfixExpression = "23*54*+9-";
+                //Example: (2 * 3) + (5 * 4) - 9
+                int result = evaluatePostfix(postfixExpression);
+                System.out.println("The result of the postfix expression is: " + result);
+        }
+}
+Balancing Parenthesis
+import java.util.Stack;
+class ParenthesisBalancer
+{
+        //Method to check if the parenthesis are balanced
+        public static Boolean areParenthesisBalanced(String expression)
+        {
+                Stack<Character>stack = new Stack<>();
+                //Iterate through each character in the expression
+                for (char ch : expression.toCharArray())
+                {
+                        //Push opening brackets onto the stack
+
+
+                        if (ch == '(' || ch == '{' || ch == '[')
+                        {
+                                stack.push(ch);
+                        }
+
+
+                        //check for closing brackets
+                        else if (ch == ')' || ch == '}' || ch ==']')
+                        {
+                                //If  stack is empty or top of stack doesn't match,return false
+
+
+                                if (stack.isEmpty() || !isMatchingPair(stack.pop(),ch))
+                                {
+                                        return false;
+                                }
+                        }
+                }
+                //If the stack is empty, all brackets were matched
+                return stack.isEmpty();
+        }
+        //Method to check if the opening and  closing brackets match
+        private static Boolean isMatchingPair(char open, char close)
+        {
+                return (open == '(' && close == ')') || (open == '{' && close == '}') || (open =='[' && close == ']');
+        }
+        public static void main(String[] args)
+        {
+                String expression = "{[()]}"; //Example input
+                if (areParenthesisBalanced(expression))
+                {
+                        System.out.println("The parenthesis are balanced.");
+                }
+                else
+                {
+                        System.out.println("The parenthesis are not balanced.");
+                }
+        }
+}
+Singly Linked List
+class Node {
+    int data;
+    Node next;
+    public Node(int data) {
+        this.data = data;
+        this.next = null;
+    }
+}
+class LinkedList {
+    Node head;
+    public LinkedList() {
+        head = null;
+    }
+    public void insert(int data) {
+        Node newNode = new Node(data);
+        if (head == null) {
+            head = newNode;
+        } else {
+            Node temp = head;
+            while (temp.next != null) {
+                temp = temp.next;
+            }
+            temp.next = newNode;
+        }
+    }
+    public void display() {
+        if (head == null) {
+            System.out.println("The list is empty");
+            return;
+        }
+        Node temp = head;
+        while (temp != null) {
+            System.out.print(temp.data + " ");
+            temp = temp.next;
+        }
+        System.out.println();
+    }
+    public void deleteFirst() {
+        if (head == null) {
+            System.out.println("The list is empty. No node to delete");
+            return;
+        }
+        head = head.next;
+    }
+    public void deleteLast() {
+        if (head == null) {
+            System.out.println("The list is empty. No node to delete");
+            return;
+        }
+        if (head.next == null) {
+            head = null;
+            return;
+        }
+        Node temp = head;
+        while (temp.next != null && temp.next.next != null) {
+            temp = temp.next;
+        }
+        temp.next = null;
+    }
+    public void delete(int value) {
+        if (head == null) {
+            System.out.println("The list is empty. No node to delete");
+            return;
+        }
+        if (head.data == value) {
+            head = head.next;
+            return;
+        }
+        Node temp = head;
+        while (temp.next != null) {
+            if (temp.next.data == value) {
+                temp.next = temp.next.next;
+                return;
+            }
+            temp = temp.next;
+        }
+        System.out.println("Node with value " + value + " not found");
+    }
+}
+class Main5 {
+    public static void main(String[] args) {
+        LinkedList list = new LinkedList();
+        list.insert(10);
+        list.insert(20);
+        list.insert(30);
+        list.insert(40);
+        System.out.println("Linked List: ");
+        list.display();
+        list.deleteFirst();
+        System.out.println("After deleting the first node:");
+        list.display();
+        list.deleteLast();
+        System.out.println("After deleting the last node:");
+        list.display();
+        list.delete(20);
+        System.out.println("After deleting node with value 20:");
+        list.display();
+        list.delete(50);
+        System.out.println("After trying to delete node with value 50:");
+        list.display();
+    }
+}
+Doubly Linked List
+class Node {
+    int data;
+    Node next;
+    Node prev;
+
+
+    public Node(int data) {
+        this.data = data;
+        this.next = null;
+        this.prev = null;
+    }
+}
+
+
+class DoublyLinkedList {
+    Node head;
+    Node tail;
+    public DoublyLinkedList() {
+        head = null;
+        tail = null;
+    }
+    public void insertAtBeginning(int data) {
+        Node newNode = new Node(data);
+        if (head == null) {
+            head = tail = newNode;
+        } else {
+            newNode.next = head;
+            head.prev = newNode;
+            head = newNode;
+        }
+    }
+    public void insertAtEnd(int data) {
+        Node newNode = new Node(data);
+        if (head == null) {
+            head = tail = newNode;
+        } else {
+            tail.next = newNode;
+            newNode.prev = tail;
+            tail = newNode;
+        }
+    }
+    public void deleteFirst() {
+        if (head == null) {
+            System.out.println("The list is empty. No node to delete");
+            return;
+        }
+        if (head == tail) {
+            head = tail = null;
+        } else {
+            head = head.next;
+            head.prev = null;
+        }
+    }
+
+
+    public void deleteLast() {
+        if (head == null) {
+            System.out.println("The list is empty. No node to delete");
+            return;
+        }
+        if (head == tail) {
+            head = tail = null;
+        } else {
+            tail = tail.prev;
+            tail.next = null;
+        }
+    }
+    public void delete(int value) {
+        if (head == null) {
+            System.out.println("The list is empty.");
+            return;
+        }
+        Node temp = head;
+        while (temp != null) {
+            if (temp.data == value) {
+                if (temp == head) {
+                    deleteFirst();
+                } else if (temp == tail) {
+                    deleteLast();
+                } else {
+                    temp.prev.next = temp.next;
+                    if (temp.next != null) {
+                        temp.next.prev = temp.prev;
+                    }
+                }
+                return;
+            }
+            temp = temp.next;
+        }
+        System.out.println("Node with value " + value + " not found");
+    }
+    public void displayForward() {
+        if (head == null) {
+            System.out.println("The list is empty");
+            return;
+        }
+        Node temp = head;
+        while (temp != null) {
+            System.out.print(temp.data + " ");
+            temp = temp.next;
+        }
+        System.out.println();
+    }
+    public void displayBackward() {
+        if (tail == null) {
+            System.out.println("The list is empty");
+            return;
+        }
+        Node temp = tail;
+        while (temp != null) {
+            System.out.print(temp.data + " ");
+            temp = temp.prev;
+        }
+        System.out.println();
+    }
+}
+class Main7 {
+    public static void main(String[] args) {
+   DoublyLinkedList list = new DoublyLinkedList();
+        list.insertAtBeginning(10);
+        list.insertAtBeginning(20);
+        list.insertAtBeginning(30);
+        System.out.println("List after inserting at beginning:");
+        list.displayForward();
+        list.insertAtEnd(40);
+        list.insertAtEnd(50);
+        System.out.println("List after inserting at end:");
+        list.displayForward();
+        list.deleteFirst();
+        System.out.println("List after deleting first node:");
+        list.displayForward();
+        list.deleteLast();
+        System.out.println("List after deleting last node:");
+        list.displayForward();
+
+
+        list.delete(20);
+        System.out.println("List after deleting node with value 20:");
+        list.displayForward();
+        System.out.println("List in reverse order:");
+        list.displayBackward();
+    }
+}
+Header Linked List
+class Node
+{
+        int data;
+        Node next;
+
+
+        //Constructor to initialize a node with data
+        public Node(int data)
+        {
+                this.data = data;
+                this.next = null;
+        }
+}
+//Header linked list class managing the list
+class HeaderLinkedList
+{
+        Node header;
+
+
+        //constructor to initialize the list with a header node
+        public HeaderLinkedList()
+        {
+                //Create a dummy header node(does not store actual data)
+                header = new Node(-1);
+                //-1 as dummy data, or can be any other value
+        }
+        //Method to insert an element at the end of the list
+        public void insert(int data)
+        {
+                Node newNode = new Node(data);
+                Node current = header;
+
+
+                //Traversal the list to find the last node
+                while (current.next != null)
+                {
+                        current = current.next;
+                }
+
+
+                //Insert the new node at the end
+                current.next = newNode;
+        }
+        //Method to delete a node with a specific value
+        public void delete(int data)
+        {
+                Node current = header;
+
+
+                //Traverse the list to find the node to be deleted
+                while (current.next != null && current.next.data != data)
+                {
+                        current = current.next;
+                }
+                //If the node is found,delete it
+                if (current.next != null)
+                {
+                        current.next = current.next.next;
+                }
+                else
+                {
+                        System.out.println("Element not found");
+                }
+        }
+        //Method to display the list
+        public void display()
+        {
+                Node current = header.next; //skip the header node
+                if(current == null)
+                 {
+                        System.out.println("List is empty.");
+                        return;
+                }
+                //traverse the list and print each node's data
+                while (current != null)
+                {
+                        System.out.print(current.data + " ");
+                        current = current.next;
+                }
+                System.out.println();
+        }
+        //Method to search for a value in the list
+        public boolean serach(int data)
+        {
+                Node current = header.next; //skip the header node
+
+
+                //Traverse the list to find the node with the given data
+                while (current != null)
+                {
+                        if (current.data == data)
+                        {
+                                return true;
+                        }
+                        current = current.next;
+                }
+                return false;
+        }
+}
+//Main class to test the HeaderLinkedList functionality
+class HeaderLinkedListTest
+{
+
+
+        public static void main(String[] args)
+        {
+                //create an instance of HeaderLinkedList
+                HeaderLinkedList list = new HeaderLinkedList();
+                //Insert elements
+                list.insert(10);
+                list.insert(20);
+                list.insert(30);
+                list.insert(40);
+                //Display the list
+                System.out.println("List after insertion:");
+                list.display();
+                //Delete an element
+                list.delete(20);
+                System.out.println("List after deleting 20:");
+                list.display();
+                //Search for an element
+                Boolean found = list.serach(30);
+                System.out.println("Is 30 in the list? " + (found ? "Yes" : "No"));
+                //Display the final list
+                System.out.println("Final List:");
+                list.display();
+        }
+}
+Doubly Header Linked List
+//Node class representing each element in the doubly linked list
+class Node
+{
+        int data;
+        Node next;
+        Node prev;        
+        //Constructor to initialize a node with data
+        public Node(int data)
+        {
+                this.data = data;
+                this.next = null;
+                this.prev = null;
+        }
+}
+//DoublyEndedLinkedList class managing the doubly linked list
+class DoublyEndedLinkedList
+{
+        Node head;
+        Node tail;
+                
+        //Constructor to initialize an empty list
+        public DoublyEndedLinkedList()
+        {
+                head = null;
+                tail = null;
+        }
+        //Method to insert a node at the beginning
+        public void insertAtBeginning(int data) 
+            {
+                Node newNode = new Node(data);
+                if (head == null) 
+                {
+                            head = tail = newNode;  // If the list is empty, both head and tail should point to the new node
+                } 
+                else 
+                {
+                           newNode.next = head;
+                            head.prev = newNode;
+                            head = newNode;
+                }
+            }
+        //Method to insert a node at the beginning
+        public void insertAtEnd(int data) 
+            {
+                       Node newNode = new Node(data);        
+                if (tail == null) 
+                {
+                            head = tail = newNode;  // If the list is empty, both head and tail should point to the new node
+
+
+                } 
+                else 
+                {
+                            tail.next = newNode;
+                            newNode.prev = tail;
+                            tail = newNode;    //Move tail to point to the new node
+                }
+        }
+        public void deleteFromBeginning() 
+            {
+                if (head == null) 
+                {
+                    System.out.println("List is empty");
+                    return;
+                }
+                if (head == tail) 
+                {
+                        //Only one node in the list
+                           head = tail = null;
+                } 
+                else 
+                {
+                            head = head.next;
+                            head.prev = null;
+                }
+            }
+        //Method to delete a node from the end
+        public void deleteFromEnd() 
+            {
+                if (tail == null) 
+                {
+                            System.out.println("List is empty");
+                            return;
+                }
+                if (head == tail) 
+                {
+                            head = tail = null;
+                } 
+                else 
+                {
+                            tail = tail.prev;
+                            tail.next = null;
+                }
+            }
+        //Method to display the list from head to tail (forward traversal)
+        public void displayForward() 
+            {
+                if (head == null) 
+                {
+                            System.out.println("List is empty");
+                            return;
+                }
+                Node current = head;
+                while (current != null) 
+                {
+                            System.out.print(current.data + " ");
+                            current = current.next;
+                }
+                System.out.println();
+            }
+        public void displayBackward() 
+            {
+                if (tail == null) 
+                {
+                            System.out.println("List is empty");
+                            return;
+                }
+                Node current = tail;
+                while (current != null) 
+                {
+                            System.out.print(current.data + " ");
+                            current = current.prev;
+                }
+                System.out.println();
+            }
+}
+class DoublyEndedLinkedListTest 
+{
+    public static void main(String[] args) 
+           {        
+        //Create an instance of DoublyEndedLinkedList
+        DoublyEndedLinkedList list = new DoublyEndedLinkedList();
+        //Insert elements at the beginning and end
+        list.insertAtBeginning(10);
+        list.insertAtBeginning(20);
+        list.insertAtEnd(30);
+        list.insertAtEnd(40);
+        //Display the list forward and backward
+        System.out.print("List after insertions (forward): ");
+        list.displayForward();
+        System.out.print("List after insertions (backward): ");
+        list.displayBackward();
+        //Delete elements from the beginning and end
+        list.deleteFromBeginning();
+        System.out.print("List after deleting from beginning (forward): ");
+        list.displayForward();
+        list.deleteFromEnd();
+        System.out.print("List after deleting from end (forward): ");
+        list.displayForward();
+        //Final List
+        System.out.print("Final List(forward): ");
+        list.displayForward();
+        }
+}
+Polynomial Addition
+class Polynomial
+{
+        private Node head; //Head of the doubly linked list
+        //node structure to store coefficient and exponent
+        private static class Node
+        {
+                int coeff; //Coefficient of the term
+                int exp; // Exponent of the term
+                Node prev;
+                Node next;
+                Node(int coeff, int exp)
+                {
+                        this.coeff = coeff;
+                        this.exp = exp;
+                        this.prev = null;
+                        this.next = null;
+                }
+        }
+        //Method to add a new term to the polynomial
+        public void addTerm(int coeff , int exp)
+        {
+                Node newNode = new Node(coeff, exp);
+
+
+                // If the list is empty, set the head to the new node
+                if (head == null)
+                {
+                        head = newNode;
+                        return;
+                }
+                Node current = head;
+                Node prev = null;
+
+
+                //Traverse the list to find the correct position based on exponent
+                while (current != null && current.exp > exp)
+                {
+                        prev = current;
+                        current = current.next;
+                }
+                if ( current != null && current.exp == exp)
+                {
+                        //If a term with the same exponent exists, add the coefficients
+                        current.coeff += coeff;
+                        if (current.coeff == 0)
+                        { //If the coefficient becomes 0, remove the node
+                                deleteNode(current);
+                        }
+                }
+                else
+                {
+                        //Insert the new node in the current position
+                        newNode.next = current;
+                        newNode.prev = prev;
+                        if (current != null)
+                        {
+                                current.prev = newNode;
+                        }
+                        if (prev != null)
+                        {
+                                prev.next = newNode;
+                        }
+                        else
+                        {
+                                head = newNode;
+                        }
+                }
+        }
+        //Helper method to delete a node
+        private void deleteNode(Node node)
+        {
+                if (node.prev != null)
+                {
+                        node.prev.next = node.next;
+                }
+                else
+                {
+                        head = node.next;
+                }
+                if (node.next != null)
+                {
+                        node.next.prev = node.prev;
+                }
+        }
+        //Method to add two polynomials
+        public static Polynomial addPolynomials(Polynomial poly1,Polynomial poly2)
+        {
+                Polynomial result = new Polynomial();
+
+
+                Node p1 = poly1.head;
+                Node p2 = poly2.head;
+
+
+                while (p1 != null && p2 != null)
+                {
+                        if(p1.exp > p2.exp)
+                        {
+                                result.addTerm(p1.coeff,p1.exp);
+                                p1 = p1.next;
+                        }
+                        else if (p1.exp < p1.exp)
+                        {
+                                result.addTerm(p2.coeff, p2.exp);
+                                p2 = p2.next;
+                        }
+                        else
+                        {
+                                //If exponents are the same, add the coefficients
+                                result.addTerm(p1.coeff + p2.coeff, p1.exp);
+                                p1 = p1.next;
+                                p2 = p2.next;
+                        }
+                }
+                //add remaining terms from poly1        
+                while (p1 != null)
+                {
+                        result.addTerm(p1.coeff, p1.exp);
+                        p1 = p1.next;
+                }
+                //Add the remaining terms from poly2
+                while (p2 != null)
+                {
+                        result.addTerm(p2.coeff, p2.exp);
+                        p2 = p2.next;
+                }
+
+
+                return result;
+        }
+        //Method to display the polynomials
+        public void display()
+        {
+                if (head == null)
+                {
+                        System.out.println("0");
+                        return;
+                }
+        
+                Node current = head;
+                while (current != null)
+                {
+                        System.out.println(current.coeff + "x^" + current.exp);
+                        if (current.next != null)
+                        {
+                                System.out.print(" + ");
+                        }
+                        current = current.next;
+                }
+                System.out.println();
+        }
+}
+//Usage example
+class Main5
+{
+        public static void main(String[] args)
+        {
+                Polynomial poly1 = new Polynomial();
+                poly1.addTerm(5, 3);
+                poly1.addTerm(4, 2);
+                poly1.addTerm(2, 0);
+                Polynomial poly2 = new Polynomial();
+                poly1.addTerm(3, 3);
+                poly1.addTerm(1, 1);
+                poly1.addTerm(6, 0);
+                System.out.println("Polynomial 1: ");
+                poly1.display(); //Output: 5x^3 + 4x^2 + 2
+                System.out.println("Polynomial 2: ");
+                poly2.display(); //Output: 3x^3 + 1x^1 + 6
+                Polynomial result = Polynomial.addPolynomials(poly1, poly2);
+                System.out.println("Resultant polynomial: ");
+                result.display(); //Expected output: 8x^3 + 4x^2 + 1x^1 + 8
+        }
+}
+Sparse Matrix
+class SparseMatrix
+{
+        private Node head; //Head of the linked list
+
+
+        //Node structure to store row,column, and value
+        private static class Node
+        {
+                int row;
+                int col;
+                int value;
+                Node next;
+
+
+                Node(int row, int col, int value)
+                {
+                        this.row = row;
+                        this.col = col;
+                        this.value = value;        
+                        this.next = null;
+                }
+        }
+        public SparseMatrix()
+        {
+                head = null;
+        }
+        //Method to insert a new non-zero element in the sparse matrix
+        public void insert(int row, int col, int value)
+        {
+                if(value == 0) return; //We only store non-zero elements
+                Node newNode = new Node(row, col, value);
+                if(head == null)
+                {
+                        head = newNode; //First element in the matrix
+                }
+                else
+                {
+                        Node current = head;
+                        while ( current.next != null)
+                        {
+                                current = current.next;
+                        }
+                        current.next = newNode; //Append the new node at the end
+                }
+                System.out.println("Inserted: (" + row + "," + col +","+ value + ")");
+        }
+        //Method to display the sparse matrix in row-column-value format
+        public void display()
+        {
+                if(head == null)
+                {
+                        System.out.println("Sparse Matrix is empty.");
+                        return;
+                }
+                Node current = head;
+                System.out.println("Row\tColumn\tValue");
+                while (current != null)
+                {
+                        System.out.println(current.row + "\t" + current.col + "\t" + current.value);
+                        current = current.next;
+                }
+        }
+        //Method to get a value at a specific row and column
+        public int getValue(int row, int col)
+        {
+                Node current = head;
+                while (current != null)
+                {
+                        if(current.row == row && current.col == col)
+                        {
+                                return current.value;
+                        }
+                        current = current.next;
+                }
+                return 0; //Return 0 if no node is found for the specified row and column
+        }
+        //Method to set a value at a specific row and column
+        public void setValue(int row, int col,int value)
+        {
+                if(value == 0)
+                {
+                        System.out.println("Setting a zero value is ignored in sparse matrix.");
+                        return;
+                }
+                Node current = head;
+                Node prev = null;
+                while(current != null)
+                {
+                        if(current.row == row && current.col == col)
+                        {
+                                current.value = value;
+                                System.out.println("Updated value at(" + row +"," + col +") to "+ value);
+                                return;
+                        }
+                        prev = current;
+                        current = current.next;
+                }
+                //If element not found, insert it as a new node
+                Node newNode = new Node(row, col, value);
+                if(prev == null)
+                {
+                        head = newNode;
+                }
+                else
+                {
+                        prev.next = newNode;
+                }
+                System.out.println("Inserted new value at (" + row + ", " + col + ") to " + value);
+        }
+}
+//Usage example
+class Main6
+{
+        public static void main(String[] args)
+        {
+                SparseMatrix sparseMatrix = new SparseMatrix();
+                //Insert non-xero elements into the sparse matrix
+                sparseMatrix.insert(0, 1, 5);
+                sparseMatrix.insert(1, 2, 8);
+                sparseMatrix.insert(2, 0, 3);
+                //Display the sparse Matrix
+                sparseMatrix.display(); //Output will show non-zero values with their row and columns
+                //get value at a specific row and column
+                System.out.println("Value at (1,2): " + sparseMatrix.getValue(1,2)); //Output: 8
+                System.out.println("Value at (0,0): " + sparseMatrix.getValue(0,0)); //Output: 0(not stored)
+                //Set value at a specific row and column
+                sparseMatrix.setValue(2, 1, 10);
+                sparseMatrix.display(); //Updated output with new non-zero values
+        }
+}
+Stack
+class Stack
+{
+        private Node top; //Top node of the stack
+        //Node Structure
+        private static class Node
+        {
+                int data;
+                Node next;
+
+
+                Node(int data)
+                {
+                        this.data = data;
+                        this.next= null;
+                }
+        }
+        public Stack() 
+        {
+                this.top = null;
+        }
+        //Push operation to add an element to the stack                
+        public void push(int data)
+        {
+                Node newNode = new Node(data);
+                newNode.next = top; //New node points to the current top
+                top = newNode;
+                System.out.println("Pushed: "+data);
+        }
+        //pop operation to remove the to element from the stack
+        public int pop()
+        {
+                if(top == null)
+                {
+                        System.out.println("stack is empty");
+                        return -1;
+                }
+                int data = top.data;
+                top = top.next; //Move top to the next node
+                System.out.println("Popped: " + data);
+                return data;
+        }
+        //Peek operation to return the top element without removing it
+        public int peek()
+        {
+                if (top == null)
+                {
+                        System.out.println("Stack is empty");
+                        return -1;
+                }
+                return top.data;
+        }
+        //check if the stack is empty
+        public Boolean isEmpty()
+        {
+                return top == null;
+        }
+        //display the elements in the stack
+        public void display()
+        {
+                if (top == null)
+                {
+                        System.out.println("stack is empty");
+                        return;
+                }
+                
+                Node current = top;
+                while (current != null)
+                {
+                        System.out.println(current.data + " ");
+                        current = current.next;        
+                }
+                System.out.println();
+        }
+        //Usage Example
+        class Main
+        {
+                public static void main(String[] args)
+                {
+                        Stack stack = new Stack();
+                        stack.push(10);
+                        stack.push(20);
+                        stack.push(30);
+                        stack.display(); //output: 30 20 10 
+                        stack.pop();        //Removes 30
+                        stack.display();        //Output: 20 10
+
+
+                                System.out.println("Top element is: " + stack.peek()); //Output: 20
+                }
+        }
+}
+Queue
+class Queue
+{
+        private Node front;
+        private Node rear;
+        private static class Node
+        {
+                int data;
+                Node next;
+
+
+                Node(int data)
+                {
+                        this.data = data;
+                        this.next = null;
+                }
+        }
+        public Queue()
+        {
+                this.front = this.rear = null;
+        }
+        public void enqueue(int data)
+        {
+                Node newNode = new Node(data);
+                if (rear == null)
+                {
+                        front = rear = newNode;
+                        System.out.println("Enqueued: " + data);
+                        return;
+                }
+
+
+                rear.next = newNode;
+                rear = newNode;
+                System.out.println("Enqueued: " + data);
+        }
+        public int dequeue()
+        {
+                if (front == null)
+                {
+                        System.out.println("Queue is empty");
+                        return -1;
+                }
+
+
+                int data = front.data;
+                front = front.next;
+
+
+                if(front==null)
+                {
+                        rear = null;
+                }
+                System.out.println("Dequeued: " + data);
+                return data;
+        }
+        public boolean isEmpty()
+        {
+                return front == null;
+        }
+        public void display()
+        {
+                if (front == null)
+                {
+                        System.out.println("Queue is empty");
+                        return;
+                }
+                Node current = front;
+                while (current != null)
+                {
+                        System.out.println(current.data+" ");
+                        current = current.next;
+                }
+                System.out.println();
+        }
+}
+class Queue1
+{
+        public static void main(String args[])
+        {
+                Queue queue = new Queue();
+                queue.enqueue(10);
+                queue.enqueue(20);
+                queue.enqueue(30);
+                queue.enqueue(40);
+                queue.display();
+                queue.dequeue();
+                queue.display();
+        }
+}
+Priority Queue
+class PriorityQueue
+{
+        private Node head; //Head node of the list
+        //Node structure
+        private static class Node
+        {
+                int data;
+                int priority;
+                Node next;
+
+
+                Node(int data,int priority)
+                {
+                        this.data = data;
+                        this.priority = priority;
+                        this.next = null;
+                }
+        }
+        
+        public PriorityQueue()
+        {
+                this.head = null;
+        }
+        //Method to add an element to the queue based on priority
+        public void enqueue(int data, int priority)
+        {
+                Node newNode = new Node(data,priority);
+        //If the queue is empty or the new node has higher priority than the head
+                if(head == null || head.priority > priority)
+                {
+                        newNode.next = head;
+                        head = newNode;
+                }
+                else
+                {
+                        //find the correct position for the new node
+                        Node current = head;
+                        while (current.next != null && current.next.priority <= priority)
+                        {
+                                current = current.next;
+                        }
+                        newNode.next = current.next;
+                        current.next = newNode;
+                }
+                System.out.println("Enqueued: "+ data + "with priority" + priority);
+        }
+        //Method to remove the highest priority element (lowest priority number)
+        public int dequeue()
+        {
+                if (head == null)
+                {
+                        System.out.println("Queue is empty");
+                        return -1;
+                }
+                int data = head.data;
+                head = head.next;
+                System.out.println("Dequeued: "+ data);
+                return data;
+        }
+        //Check if the queue is empty
+        public Boolean isEmpty()
+        {
+                return head == null;
+        }
+        //Display the elements in the queue along with their priorities
+        public void display()
+        {
+                if( head == null)
+                {
+                        System.out.println("queue is empty");
+                        return;
+                }
+                Node current = head;
+                while( current != null)
+                {
+                        System.out.println("("+current.data + ",priority: "+ current.priority +")");
+                        current = current.next;
+                }
+                System.out.println();
+        }
+}
+//Usage Example
+class Main2
+{
+        public static void main(String[] args)
+        {
+                PriorityQueue pq = new PriorityQueue();
+                pq.enqueue(10,2);
+                pq.enqueue(20,1);
+                pq.enqueue(30,3);
+                pq.display();
+                //output: (20,priority: 1) (10,priority:2) (30, priority : 3)
+                pq.dequeue(); //Removes 20,as it has the highest priority
+                pq.display(); //Output: (10,priority: 2) (30,priority: 3)
+                pq.enqueue(40,10);
+                pq.display();
+                //Output: (40, priority: 1) (10,priority: 2) (30,priority: 3)
+        }
+}
+Pre-order
+//pre order of BST
+import java.util.LinkedList;
+class BST
+{
+        //Define the structure of a BST node
+        static class Node
+        {
+                int data;
+                Node left, right;
+        
+                public Node(int item)
+                {
+                        data = item;
+                        left = right = null;
+                }
+        }
+        //Root of BST
+        Node root;
+        //constructor for BST
+        BST()
+        {
+                root = null;
+        }
+        //Insert a new node into the BST
+        public void insert(int data)
+        {
+                root = insertRec(root, data);
+        }
+        //Recursive function to insert a new node
+        private Node insertRec(Node root, int data)
+        {
+                if (root == null)
+                {
+                        root = new Node(data);
+                        return root;
+                }
+                if (data < root.data)
+                {
+                        root.left = insertRec(root.left, data);
+                }
+                else if (data > root.data)
+                {
+                        root.right = insertRec(root.right, data);
+                }
+                return root;
+        }
+        //pre-order traversal of the BST
+        public LinkedList<Integer> preOrderTraversal()
+        {
+                LinkedList<Integer> result = new LinkedList<>();
+                preOrderRec(root, result);
+                return result;
+        }
+        //Helper recursive function to perform pre-order traversal
+        private void preOrderRec(Node node, LinkedList<Integer> result)
+        {
+                if(node == null)
+                {
+                        return;
+                }
+                //visit the root
+                result.add(node.data);
+                //Traverse the left subtree
+                preOrderRec(node.left, result);
+
+
+                //Traverse the right subtree
+                preOrderRec(node.right, result);
+        }
+        //Main method for testing
+        public static void main(String[] args)
+        {
+                BST tree = new BST();
+                //Inserting nodes into the BST
+                tree.insert(50);
+                tree.insert(30);
+                tree.insert(20);
+                tree.insert(40);
+                tree.insert(70);
+                tree.insert(60);
+                tree.insert(80);
+                //Get pre-order traversal result
+                LinkedList<Integer> result = tree.preOrderTraversal();
+                //Print the result
+                System.out.println("Pre-order traversal of BST: ");
+                for (int value : result)
+                {
+                        System.out.print(value + " ");
+                }
+        }
+}
+In-order
+class BinarySearchTree
+{
+
+
+        //Node class representing each node in the binary search tree
+        static class Node
+        {
+                int data;
+                Node left, right;
+
+
+                public Node(int item)
+                {
+                        data = item;
+                        left = right = null;
+                }
+        }
+        //binary search tree class
+        static class BST
+        {
+                Node root;
+                public BST()
+                {
+                        root = null;
+                }
+                //Insert a new node with the given data
+                public void insert(int data)
+                {
+                        root = insertRec(root,data);
+                }
+                private Node insertRec(Node root, int data)
+                {
+                        //If the tree is empty, return a new node
+                        if (root == null)
+                        {
+                                root = new Node(data);
+                                return root;
+                        }
+                        //Otherwise, recur down the tree
+                        if(data < root.data)
+                        {
+                                root.left = insertRec(root.left, data);
+                        }
+                        else if (data > root.data)
+                        {
+                                root.right = insertRec(root.right, data);
+                        }
+
+
+                        //Return the (unchanged) node pointer
+                        return root;
+                }
+                //In-order traversal (left, root, right)
+                public void inorder()
+                {
+                        inorderRec(root);
+                }
+                private void inorderRec(Node root)
+                {
+                        if (root != null)
+                        {
+                                inorderRec(root.left);
+                                System.out.print(root.data + " ");
+                                inorderRec(root.right);
+                        }
+                }
+                //Search for a value in the tree
+                public Boolean search(int key)
+                {
+                        return searchRec(root, key);
+                }
+                private Boolean searchRec(Node root, int key)
+                {
+                        //Base case: root is null or key is present at the root
+                        if (root == null || root.data == key)
+                                return root != null;
+
+
+                        //Key is smaller than the root's key
+                        return searchRec(root.left, key);
+                }
+                //Find the minimum value node in the BST
+                public int findMin()
+                {
+                        Node current = root;
+                        while (current.left != null)
+                        {
+                                current = current.left;
+                        }
+                        return current.data;
+                }
+                //Find the maximum value node in the BST
+                public int findMax()
+                {
+                        Node current = root;
+                        while (current.right != null)
+                        {
+                                current = current.right;
+                        }
+                        return current.data;
+                }
+                //Delete a node from the tree
+                public void delete(int key)
+                {
+                        root = deleteRec(root, key);
+                }
+                private Node deleteRec(Node root, int key)
+                {
+                        //Base case: if the tree is empty
+                        if(root == null)
+                                return root;
+                        //Recur down the tree
+                        if (key < root.data)
+                        {        
+                                root.left = deleteRec(root.left, key);
+                        }
+                        else if (key > root.data)
+                        {
+                                root.right = deleteRec(root.right, key);
+                        }
+                        else
+                        {
+                                //Node with only one child or no child
+                                if (root.left == null)
+                                        return root.right;
+                                else if (root.right == null)
+                                        return root.left;
+
+
+        //Nodewith two children: Get the inorder successor(smallest in the right subtree)
+                                root.data = minValue(root.right);
+
+
+                                //delete the inorder successor
+                                root.right = deleteRec(root.right, root.data);
+                        }
+
+
+                        return root;
+                }
+                private int minValue(Node root)
+                {
+                        int minValue = root.data;
+                        while (root.left != null)
+                        {
+                                minValue = root.left.data;
+                                root = root.left;
+                        }
+                        return minValue;
+                }
+                //Height of the tree
+                public int height()
+                {
+                        return heightRec(root);
+                }
+                private int heightRec(Node root)
+                {
+                        if(root == null)
+                                return 0;
+
+
+                        int leftHeight = heightRec(root.left);
+                        int rightHeight= heightRec(root.right);
+
+
+                        return Math.max(leftHeight, rightHeight) +1 ;
+                }
+        }
+        public static void main(String[]args)
+        {
+                BST tree = new BST();
+                //Inserting nodes into the BST
+                tree.insert(50);
+                tree.insert(30);
+                tree.insert(20);
+                tree.insert(40);
+                tree.insert(70);
+                tree.insert(60);
+                tree.insert(80);
+                //In-order traversal of the BST
+                System.out.println("In-order traversal: ");
+                tree.inorder(); //Output should be in ascending order
+                System.out.println();
+                //Search for a node
+                System.out.println("Search for 50: "+ (tree.search(50) ? "Found" : "Not Found"));
+                System.out.println("Search for 100: "+ (tree.search(100) ? "Found" : "Not Found"));
+                //Find minimum and maximum values in the BST
+                System.out.println("Minimum value: "+ tree.findMin());
+                System.out.println("Maximum value: "+ tree.findMax());
+                //Delete a node(e.g. 20)
+                System.out.println("Deleting node 20");
+                tree.delete(20);
+                tree.inorder(); //In=order traversal after deletion
+                System.out.println();
+                //Find the height of the BST
+                System.out.println("Height of the tree: "+tree.height());
+        }
+}
+Post-Order
+//post order of BST
+import java.util.LinkedList;
+class BST
+{
+        //Define the structure of a BST node
+        static class Node
+        {
+                int data;
+                Node left, right;
+        
+                public Node(int item)
+                {
+                        data = item;
+                        left = right = null;
+                }
+        }
+        //Root of BST
+        Node root;
+        //constructor for BST
+        BST()
+        {
+                root = null;
+        }
+        //Insert a new node into the BST
+        public void insert(int data)
+        {
+                root = insertRec(root, data);
+        }
+        //Recursive function to insert a new node
+        private Node insertRec(Node root, int data)
+        {
+                if (root == null)
+                {
+                        root = new Node(data);
+                        return root;
+                }
+                if (data < root.data)
+                {
+                        root.left = insertRec(root.left, data);
+                }
+                else if (data > root.data)
+                {
+                        root.right = insertRec(root.right, data);
+                }
+                return root;
+        }
+        //post-order traversal of the BST
+        public LinkedList<Integer> postOrderTraversal()
+        {
+                LinkedList<Integer> result = new LinkedList<>();
+                postOrderRec(root, result);
+                return result;
+        }
+
+
+        //Helper recursive function to perform pre-order traversal
+        private void postOrderRec(Node node, LinkedList<Integer> result)
+        {
+                if(node == null)
+                {
+                        return;
+                }
+                //Traverse the left subtree
+                postOrderRec(node.left, result);
+                //Traverse the right subtree
+                postOrderRec(node.right, result);
+                //visit the root
+                result.add(node.data);
+        }
+        //Main method for testing
+        public static void main(String[] args)
+        {
+                BST tree = new BST();
+                //Inserting nodes into the BST
+                tree.insert(50);
+                tree.insert(30);
+                tree.insert(20);
+                tree.insert(40);
+                tree.insert(70);
+                tree.insert(60);
+                tree.insert(80);
+                //Get pre-order traversal result
+                LinkedList<Integer> result = tree.postOrderTraversal();
+                //Print the result
+                System.out.println("Post-order traversal of BST: ");
+                for (int value : result)
+                {
+                        System.out.print(value + " ");
+                }
+        }
+}
+heap.
+import java.util.*;
+
+
+class MaxHeap {
+    private int[] heap;
+    private int size;
+    private int capacity;
+    public MaxHeap(int capacity) {
+        this.capacity = capacity;
+        heap = new int[capacity];
+        size = 0;
+    }
+    private int parent(int index) {
+        return (index - 1) / 2;
+    }
+    private int leftChild(int index) {
+        return 2 * index + 1;
+    }
+    private int rightChild(int index) {
+        return 2 * index + 2;
+    }
+    public void insert(int value) {
+        if (size == capacity) {
+            throw new IllegalStateException("Heap is full");
+        }
+        heap[size] = value;
+        size++;
+        reheapUp(size - 1);
+    }
+    private void reheapUp(int index) {
+        while (index > 0 && heap[parent(index)] < heap[index]) {
+            swap(index, parent(index));
+            index = parent(index);
+        }
+    }
+    public int remove() {
+        if (size == 0) {
+            throw new IllegalStateException("Heap is empty");
+        }
+        int root = heap[0];
+        heap[0] = heap[size - 1];
+        size--;
+        reheapDown(0);
+        return root;
+    }
+    private void reheapDown(int index) {
+        int largest = index;
+        int left = leftChild(index);
+        int right = rightChild(index);
+        if (left < size && heap[left] > heap[largest]) {
+            largest = left;
+        }
+        if (right < size && heap[right] > heap[largest]) {
+            largest = right;
+        }
+        if (largest != index) {
+            swap(index, largest);
+            reheapDown(largest);
+        }
+    }
+    private void swap(int i, int j) {
+        int temp = heap[i];
+        heap[i] = heap[j];
+        heap[j] = temp;
+    }
+    public void printHeap() {
+        for (int i = 0; i < size; i++) {
+            System.out.print(heap[i] + " ");
+        }
+        System.out.println();
+    }
+    public boolean isEmpty() {
+        return size == 0;
+    }
+    public int getSize() {
+        return size;
+    }
+}
+class Main {
+    public static void main(String[] args) {      
+        MaxHeap maxHeap = new MaxHeap(10);
+        maxHeap.insert(10);
+        maxHeap.insert(20);
+        maxHeap.insert(5);
+        maxHeap.insert(30);
+        maxHeap.insert(25);
+        System.out.println("Max heap insertions.");
+        maxHeap.printHeap();
+        System.out.println("Max Heap After Removal: " + maxHeap.remove());
+        maxHeap.printHeap();
+        maxHeap.insert(35);
+        System.out.println("Max Heap after inserting 35.");
+        maxHeap.printHeap();
+        System.out.println("Removed Element: " + maxHeap.remove());
+        maxHeap.printHeap();
+    }
+}
+Adjacency matrix
+import java.util.Scanner;
+class Graph
+{
+        private int [][] adjMatrix;        //2D array to represent the adjacency matrix
+        private int numVertices;        //Number  of vertices in the graph
+        
+        //Constructor to initialize the graph with a given number of vertices
+        public Graph(int numVertices)
+        {
+                this.numVertices = numVertices;
+                adjMatrix = new int[numVertices][numVertices];        //Initialize the matrix with 0 seconds
+        }
+        //Add an edge between two vertices
+        public void addEdge(int vertex1, int vertex2)
+        {
+                if (vertex1 >= numVertices || vertex2 >= numVertices)
+                {
+                        System.out.println("Invalid vertex number");
+                        return;
+                }
+                adjMatrix[vertex1][vertex2] = 1;        //Set the corresponding cell to 1
+                adjMatrix[vertex2][vertex1] = 1;        //Because the graph is undirected
+        }
+        //Remove an edge between two vertices
+        public void removeEdge(int vertex1, int vertex2)
+        {
+                if(vertex1 >= numVertices || vertex2 >= numVertices)
+                {
+                        System.out.println("Invalid vertex number");
+                        return;
+                }
+                adjMatrix[vertex1][vertex2] = 0;        //Set the corresponding cell to 0
+                adjMatrix[vertex2][vertex1] = 0;        //Because the graph is undirected
+        }
+        //Print the adjacency matrix
+        public void printGraph()
+        {
+                System.out.println("Adjacency Matrix: ");
+                for(int i = 0; i < numVertices; i++)
+                {
+                        for(int j = 0; j < numVertices; j++)
+                        {
+                                System.out.print(adjMatrix[i][j] + " ");
+                        }
+                        System.out.println();
+                }
+        }
+        //Check if there is an edge between two vertices
+        public Boolean hasEdge(int vertex1, int vertex2)
+        {
+                if(vertex1 >= numVertices || vertex2 >= numVertices)
+                {
+                        System.out.println("Invalid vertex number");
+                        return false;
+                }
+                return adjMatrix[vertex1][vertex2] == 1;
+        }
+        public static void main(String[]args)
+        {
+                //Create a graph with 5 vertices
+                Scanner scanner = new Scanner(System.in);
+                System.out.print("Enter the number of vertices: ");
+                int vertices = scanner.nextInt();
+                Graph graph = new Graph(vertices);
+                
+                //Add some edges
+                graph.addEdge(0, 1);        //Add edge between vertex 0 and 1
+                graph.addEdge(1, 2);        //Add edge between vertex 1 and 2
+                graph.addEdge(2, 3);        //Add edge between vertex 2 and 3
+                graph.addEdge(3, 4);        //Add edge between vertex 3 and 4
+                graph.addEdge(4, 0);        //Add edge between vertex 4 and 0
+                //Print the adjacency matrix
+                graph.printGraph();
+                //Check if an edge exists between two vertices
+                System.out.print("Check if there's an edge between vertex 1 and vertex 3: ");
+                System.out.println(graph.hasEdge(1, 3));
+                //Remove an edge
+                graph.removeEdge(1, 3);
+                System.out.println("After removing the edge between vertex1 and vertex 3: ");
+                graph.printGraph();
+        }
+}
+BFS
+import java.util.LinkedList;
+import java.util.Queue;
+class Graph
+{
+    private int vertices;  //Number of vertices
+    private LinkedList<Integer>[] adjList;
+    // Adjacency list for storing the graph
+    // Constructor
+    public Graph(int vertices)
+    {
+        this.vertices = vertices;
+        adjList = new LinkedList[vertices];
+        
+        // Initialize each adjacency list as an empty
+        for (int i = 0; i < vertices; i++)
+        {
+            adjList[i] = new LinkedList<>();
+        }
+    }
+    
+    // Add an edge to the graph
+    public void addEdge(int source, int destination)
+    {
+        adjList[source].add(destination);
+        // Add destination node to the source node's list
+        adjList[destination].add(source);
+        // Since it's an undirected graph, add both ways    
+    } 
+    // Perform BFS traversal starting from a given node
+    public void bfs(int start)
+    {
+        // Create a visited array to keep track of visited nodes
+        boolean[] visited = new boolean[vertices];
+        // Create a queue for BFS
+        Queue<Integer> queue = new LinkedList<>();
+        
+        // Mark the start node as visited and enqueue it
+        visited[start] = true;
+        queue.add(start);
+        // Continue until the queue is empty
+        while (!queue.isEmpty())
+        {
+            // Dequeue a vertex from the queue
+            int node = queue.poll();
+            // Print the node (this is the visiting process)
+            System.out.print(node + " ");
+                   // Get all adjacent vertices of the dequeued vertex
+            // If an adjacent vertex has not been visited, mark it visited and enqueue it
+            for (Integer neighbor : adjList[node])
+            {
+                if (!visited[neighbor])
+                {
+                    visited[neighbor] = true;
+                    queue.add(neighbor);
+                }
+            }
+        }
+    }
+}
+class BFSExample1
+{
+    public static void main(String[] args)
+    {
+        // Create a graph with 6 vertices (0 to 5)
+        Graph graph = new Graph(6);
+        // Add edges to the graph (undirected)
+        graph.addEdge(0 ,1);
+        graph.addEdge(0 ,2);
+        graph.addEdge(1 ,3);
+        graph.addEdge(1 ,4);
+        graph.addEdge(2 ,5);
+        // Perform BFS starting from node 0
+        System.out.println("BFS traversal starting from node 0: ");
+        graph.bfs(0);
+    }
+}
+Priority Queue-task scheduler
+priorityQueue
+import java.util.*;
+import java.util.Queue;  
+import java.util.PriorityQueue;
+import java.util.Comparator;
+class TaskScheduler
+{
+        //Task class
+        static class Task
+        {
+                private String taskName;
+                private int priority;
+                //constructor
+                public Task(String taskName,int priority)
+                {
+                        this.taskName = taskName;
+                        this.priority = priority;
+                }
+                //Getter method
+                public String getTaskName()                
+                {
+                        return taskName;
+                }
+
+
+                public int getPriority()
+                {
+                        return priority;
+                }
+                //stringrepresentation of the task
+                public String toString()
+                {
+                        return "Task{name=' " + taskName + "',priority=" + priority + "}";
+                }
+        }
+        public static void main(String[] args)
+        {
+                //create a custom comparator to order tasks by priority
+                //lower priority number is higher priority)
+                Comparator<Task> taskComparator = new Comparator<Task>()
+                {
+                        public int compare(Task task1, Task task2)
+                        {
+                                return Integer.compare(task1.getPriority(),task2.getPriority());
+
+
+                        }
+                };
+                //create a priorityQueue with the custom comparator
+                PriorityQueue<Task> taskQueue = new PriorityQueue<>(taskComparator);
+                //add some task to the queue
+                taskQueue.add(new Task("Task 1", 3));
+                taskQueue.add(new Task("Task 2", 1));
+                taskQueue.add(new Task("Task 3", 2));
+                taskQueue.add(new Task("Task 4", 4));
+                //process and execute tasks in order of their priority
+                System.out.println("Task execution order:");
+                while(!taskQueue.isEmpty())
+                {
+                        Task task = taskQueue.poll(); //retrive and remove the task with highest priority
+                        System.out.println("Executing "+ task);
+                }
+        }
+}
+Prim’s Algorithm
+import java.util.*;
+import java.util.Queue;  
+import java.util.PriorityQueue;
+import java.util.Comparator;
+//classto represent the graph
+class Graph
+{
+        private int V; //number of vertices
+        private int[][] adjMatrix; //adjacency matrix to represent the graph
+
+
+        public Graph(int V)
+        {
+                this.V = V;
+                adjMatrix = new int[V][V];
+        }
+        //add edge between vertex u and vertex v with given weight
+        public void addEdge(int u, int v, int weight)
+        {
+                adjMatrix[u][v] = weight;
+                adjMatrix[v][u] = weight; //for undirected graph
+        }
+        //prim's algorithm to find MST
+        public void primMST()
+        {
+                //priority queue to store vertex and its associated edge weight
+                PriorityQueue<Node> pq = new PriorityQueue<>(Comparator.comparingInt(node -> node.weight));
+                //arrays to keep track of parent ,key values and visited vertices
+                int[] parent = new int[V];
+                int[] key = new int[V];
+                boolean[] inMST = new boolean[V];
+                //Initialize all key values as infinity, parent as -1
+                Arrays.fill(key, Integer.MAX_VALUE);
+                Arrays.fill(inMST, false);
+                //start from the first vertex(0th vertex)
+                key[0] = 0;
+                parent[0]= -1;
+                //Add the first vertex to the priority queue with weight 0
+                pq.add(new Node(0,0));
+                //loop to process all vertices
+                while (!pq.isEmpty())
+                {
+                        //Extract the vertex with the minimum key value(weight)
+                        int u = pq.poll().vertex;
+                        //mark the vertex as included in MST
+                        inMST[u] = true;
+                        //update the adjacent verticesof the extracted vertex
+                        for(int v =0; v < V; v++)
+                        {
+                                //check if v is not yet included in MST and if the edge weight is smaller than the current key value
+                                if(adjMatrix[u][v] != 0 && !inMST[v] && adjMatrix[u][v] < key[v])
+                                {
+                                        key[v] = adjMatrix[u][v];
+                                        parent[v] = u;
+                                        pq.add(new Node(v, key[v]));
+                                }
+                        }
+                }
+                //print the edges of the mst
+                printMST(parent);
+        }
+        //function to print the MST
+        private void printMST(int[] parent)
+        {
+                System.out.println("Edge \tWeight");
+                int totalWeight = 0;
+                for (int i = 1; i < V; i++)
+                {
+                        System.out.println(parent[i] + " - " + i + "\t" + adjMatrix[i] [parent[i]]);
+                        totalWeight += adjMatrix[i][parent[i]];
+                }
+                System.out.println("\nTotal Weight of MST: " + totalWeight);
+        }
+        //Class to represent a node in the priority queue
+        static class Node
+        {
+                int vertex;
+                int weight;
+
+
+                public Node(int vertex,int weight)
+                {
+                        this.vertex = vertex;
+                        this.weight = weight;
+                }
+        }
+}
+//driver class to test Prim's algorithm
+class PrimsAlgorithm 
+{
+        public static void main(String[] args)
+        {
+                //create a graph with 5 vertices
+                Graph graph = new Graph(5);
+                //add edges to graph
+                graph.addEdge(0, 1, 2);
+                graph.addEdge(0, 3, 6);
+                graph.addEdge(1, 2, 3);
+                graph.addEdge(1, 3, 8);
+                graph.addEdge(1, 4, 5);
+                graph.addEdge(2, 4, 7);
+                graph.addEdge(3, 4, 9);
+
+
+                //run the prim's algorithm to find the MST
+                graph.primMST();
+        }
+}
+Kruskal’s Algorithm
+import java.util.*;
+//class to represent a disjoint set (union-find)
+class DisJointSet
+{
+        private int[] parent, rank;
+        public DisJointSet(int n)
+        {
+                parent = new int[n];
+                rank = new int[n];
+                for (int i = 0; i < n; i++)
+                {
+                        parent[i] = i; //Initially ,each node is its own parent
+                        rank[i] = 0;
+                }
+        }
+        //find operation with path compression
+        public int find(int u)
+        {
+                if(parent[u] != u)
+                {
+                        parent[u] = find(parent[u]); //path compression
+                }
+                return parent[u];
+        }
+        //union operation by rank
+        public void union(int u, int v)
+        {
+                int rootU = find(u);
+                int rootV = find(v);
+
+
+                if (rootU != rootV)
+                {
+                        //Union by rank to keep the tree flat
+                        if (rank[rootU] > rank[rootV])
+                        {
+                                parent[rootV] = rootU;
+                        }
+                        else if (rank[rootU] < rank[rootV])
+                        {
+                                parent[rootU] = rootV;
+                        }
+                        else
+                        {
+                                parent[rootV] = rootU;
+                                rank[rootU]++;
+                        }
+                }
+        }
+}
+//class to represent an edge in the graph
+class Edge implements Comparable<Edge>
+{
+        int u, v, weight;
+        public Edge(int u, int v, int weight)
+        {
+                this.u = u;
+                this.v = v;
+                this.weight = weight;
+        }
+
+
+        //to sort edges by weight
+        @Override
+        public int compareTo(Edge other)
+        {
+                return Integer.compare(this.weight, other.weight);
+        }
+}
+//Kruskal's algorithm from minimum spanning tree
+class KruskalMST
+{
+        public static List<Edge> Kruskal(int n, List<Edge> edges)
+        {
+                //step 1: sort edges by weight
+                Collections.sort(edges);
+                //step 2: create a disjoint set for union-find
+                DisJointSet ds = new DisJointSet(n);
+                List<Edge> mst =new ArrayList<>();
+                //arraylist is a part of collection framework and it is a class of java.util pacakage
+                //It provides us with dynamic arrays in Java
+                //step 3: Iterate over edges and apply union-find to avoid cycles
+                for (Edge edge: edges)
+                {        
+                        int u = edge.u;
+                        int v = edge.v;
+                        if (ds.find(u) != ds.find(v))
+                        {
+                                ds.union(u, v);
+                                mst.add(edge);
+                        }
+                }
+                return mst;
+        }
+        public static void main(String[] args)
+        {
+                //no. of vertices(nodes)
+                int n = 4;
+                //list of all edges in the graph(u, v, weight)
+                List<Edge> edges = new ArrayList<>();
+                edges.add(new Edge(0, 1, 10));
+                edges.add(new Edge(0, 2, 6));
+                edges.add(new Edge(0, 3, 5));
+                edges.add(new Edge(1, 3, 15));
+                edges.add(new Edge(2, 3, 4));
+                //find the MST using Kruskal's algorithm
+                List<Edge> mst = Kruskal(n, edges);
+                //print the edges in the MST
+                System.out.println("Minimum spanning tree (MST): ");
+                int totalWeight = 0;
+                for (Edge edge : mst)
+                {
+                        System.out.println("Edge: " + edge.u + " - " + edge.v + " | Weight: " + edge.weight);
+                        totalWeight += edge.weight;
+                }
+                System.out.println("\nTotal weight of MST: " + totalWeight);
+        }
+}
